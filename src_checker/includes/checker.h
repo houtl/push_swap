@@ -6,7 +6,7 @@
 /*   By: thou <>                                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2018/02/04 15:34:17 by thou              #+#    #+#             */
-/*   Updated: 2018/02/04 15:34:17 by thou             ###   ########.fr       */
+/*   Updated: 2018/02/15 15:53:50 by thou             ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -14,5 +14,12 @@
 # define CHECKER_H
 
 # include "libft.h"
+
+typedef struct		s_pile
+{
+	char			**a;
+	char			**b;
+	int				n;
+}					t_pile;
 
 #endif
