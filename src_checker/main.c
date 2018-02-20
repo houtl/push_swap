@@ -6,15 +6,15 @@
 /*   By: thou <thou@student.42.fr>                  +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2018/02/04 15:28:05 by thou              #+#    #+#             */
-/*   Updated: 2018/02/15 15:53:59 by thou             ###   ########.fr       */
+/*   Updated: 2018/02/20 02:12:39 by thou             ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "checker.h"
 
-void	ft_error(char *str)
+void	ft_error(void)
 {
-	ft_putendl(str);
+	ft_putendl("Error");
 	exit(0);
 }
 
@@ -49,7 +49,7 @@ int		main(int ac, char **av)
 	t_pile	pile;
 
 	if (ac < 2)
-		ft_error("pas de parametre");
+		ft_error;
 	pile.n = -1;
 	pile.a = (char**)malloc(sizeof(char*) * (ac));
 	pile.b = (char**)malloc(sizeof(char*) * (ac));
