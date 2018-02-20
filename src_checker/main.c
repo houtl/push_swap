@@ -6,19 +6,37 @@
 /*   By: thou <thou@student.42.fr>                  +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2018/02/04 15:28:05 by thou              #+#    #+#             */
-/*   Updated: 2018/02/20 02:12:39 by thou             ###   ########.fr       */
+/*   Updated: 2018/02/20 02:39:01 by thou             ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "checker.h"
 
-void	ft_error(void)
+void	ft_error(char *str)
 {
-	ft_putendl("Error");
+	ft_putendl(str);
 	exit(0);
 }
 
-void	ft_lire(char *str, t_pile *pile)
+void	ft_read(t_pile *pile)
+{
+	char	*str;
+	int		i;
+
+	while (++pile->n < ac - 1)
+	{
+		str = av[pile->n + 1];
+		i = -1;
+		while (str[++i] != 0)
+		{
+			if (ft_isnb(str[i]) == 0)
+				ft_error(ERROR);
+		}
+		pile->a[pile->n] = ft_atoi(str);
+	}
+}
+
+void	ft_tri(t_pile *pile)
 {
 	char	*str;
 	char	*line;
@@ -49,13 +67,12 @@ int		main(int ac, char **av)
 	t_pile	pile;
 
 	if (ac < 2)
-		ft_error;
+		ft_error(ERROR);
 	pile.n = -1;
 	pile.a = (char**)malloc(sizeof(char*) * (ac));
 	pile.b = (char**)malloc(sizeof(char*) * (ac));
-	while (++pile.n < ac - 1)
-		pile.a[pile.n] = av[pile.n + 1];
-	ft_lire(str, &pile);
+	ft_read(&pile);
+	ft_tri(&pile);
 	ft_verifier(&pile);
 	return (0);
 }

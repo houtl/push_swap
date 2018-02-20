@@ -15,11 +15,19 @@
 
 # include "libft.h"
 
+# define ERROR	"Error"
+# define OK		"OK"
+# define KO		"KO"
+
 typedef struct		s_pile
 {
 	char			**a;
 	char			**b;
 	int				n;
 }					t_pile;
+
+
+void				ft_error(char *str);
+void				ft_verifier(t_pile *pile);
 
 #endif
