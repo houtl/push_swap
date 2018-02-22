@@ -1,49 +1,59 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   ft_swap.c                                          :+:      :+:    :+:   */
+/*   ft_rotate.c                                        :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: thou <marvin@42.fr>                        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2018/02/20 15:11:11 by thou              #+#    #+#             */
-/*   Updated: 2018/02/22 12:57:13 by thou             ###   ########.fr       */
+/*   Created: 2018/02/22 10:45:35 by thou              #+#    #+#             */
+/*   Updated: 2018/02/22 12:57:06 by thou             ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "checker.h"
 
-void	ft_sa(t_pile *pile)
+void	ft_ra(t_pile *pile)
 {
+	t_list	*list;
 	t_list	*tmp;
 
 	if (pile->a == NULL || pile->a->next == NULL)
 		return ;
-	tmp = pile->a->next;
-	pile->a->next = pile->a->next->next;
-	ft_lstadd(&(pile->a), tmp);
+	list = pile->a;
+	while (list->next)
+		list = list->next;
+	tmp = pile->a;
+	pile->a = pile->a->next;
+	tmp->next = NULL;
+	list->next = tmp;
 }
 
-void	ft_sb(t_pile *pile)
+void	ft_rb(t_pile *pile)
 {
+	t_list	*list;
 	t_list	*tmp;
 
 	if (pile->b == NULL || pile->b->next == NULL)
 		return ;
-	tmp = pile->b->next;
-	pile->b->next = pile->b->next->next;
-	ft_lstadd(&(pile->b), tmp);
+	list = pile->b;
+	while (list->next)
+		list = list->next;
+	tmp = pile->b;
+	pile->b = pile->b->next;
+	tmp->next = NULL;
+	list->next = tmp;
 }
 
-void	ft_swap(char *str, t_pile *pile)
+void	ft_rotate(char *str, t_pile *pile)
 {
-	if (ft_strcmp(str, "sa") == 0)
-		ft_sa(pile);
-	else if (ft_strcmp(str, "sb") == 0)
-		ft_sb(pile);
-	else if (ft_strcmp(str, "ss") == 0)
+	if (ft_strcmp(str, "ra") == 0)
+		ft_ra(pile);
+	else if (ft_strcmp(str, "rb") == 0)
+		ft_rb(pile);
+	else if (ft_strcmp(str, "rr") == 0)
 	{
-		ft_sa(pile);
-		ft_sb(pile);
+		ft_ra(pile);
+		ft_rb(pile);
 	}
 	else
 		ft_error(ERROR);

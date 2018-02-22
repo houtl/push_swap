@@ -6,7 +6,7 @@
 #    By: thou <marvin@42.fr>                        +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2018/01/12 17:48:41 by thou              #+#    #+#              #
-#    Updated: 2018/01/12 17:49:25 by thou             ###   ########.fr        #
+#    Updated: 2018/02/22 12:53:39 by thou             ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -25,12 +25,12 @@ NAME1		=	push_swap
 NAME2		=	checker
 FLAG		=	-Wall -Wextra -Werror
 INC			=	-I libft/includes
-INC1		=	$(INC) -I $(NAME1)/includes
-INC2		=	$(INC) -I $(NAME2)/includes
+INC1		=	$(INC) -I src_$(NAME1)/includes
+INC2		=	$(INC) -I src_$(NAME2)/includes
 SRC_DIR1	=	src_$(NAME1)/
 SRC_DIR2	=	src_$(NAME2)/
 SRC_BASE1	=	main.c
-SRC_BASE2	=	main.c
+SRC_BASE2	=	main.c ok.c ft_swap.c ft_push.c ft_rotate.c ft_reverota.c
 SRC1		=	$(addprefix $(SRC_DIR1), $(SRC_BASE1))
 SRC2		=	$(addprefix $(SRC_DIR2), $(SRC_BASE2))
 OBJ_DIR		=	obj/

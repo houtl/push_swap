@@ -6,7 +6,7 @@
 /*   By: thou <thou@student.42.fr>                  +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2018/02/20 01:54:07 by thou              #+#    #+#             */
-/*   Updated: 2018/02/22 10:24:00 by thou             ###   ########.fr       */
+/*   Updated: 2018/02/22 13:29:17 by thou             ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -15,15 +15,15 @@
 void	ft_verifier(t_pile *pile)
 {
 	int		i;
-	t_list	**tmp;
+	t_list	*tmp;
 
-	tmp = pilt->a;
-	if (pile->b != NULL)
-		ft_error(ERROR);
+	tmp = pile->a;
+	if (pile->b)
+		ft_error(KO);
 	i = 0;
-	while (tmp != NULL || tmp->next != NULL)
+	while (tmp && tmp->next)
 	{
-		if (tmp->content < tmp->next->content)
+		if (tmp->content_size < tmp->next->content_size)
 			ft_error(KO);
 		tmp = tmp->next;
 	}
