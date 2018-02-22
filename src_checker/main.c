@@ -6,7 +6,7 @@
 /*   By: thou <thou@student.42.fr>                  +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2018/02/04 15:28:05 by thou              #+#    #+#             */
-/*   Updated: 2018/02/20 02:39:01 by thou             ###   ########.fr       */
+/*   Updated: 2018/02/22 10:17:31 by thou             ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -21,8 +21,11 @@ void	ft_error(char *str)
 void	ft_read(t_pile *pile)
 {
 	char	*str;
+	t_list	*tmp;
 	int		i;
 
+	pile->a = NULL;
+	pile->b = NULL;
 	while (++pile->n < ac - 1)
 	{
 		str = av[pile->n + 1];
@@ -32,7 +35,8 @@ void	ft_read(t_pile *pile)
 			if (ft_isnb(str[i]) == 0)
 				ft_error(ERROR);
 		}
-		pile->a[pile->n] = ft_atoi(str);
+		tmp = ft_lstnew(ft_atoi(str), 0);
+		ft_lstadd(pile->a, tmp);
 	}
 }
 
@@ -69,8 +73,6 @@ int		main(int ac, char **av)
 	if (ac < 2)
 		ft_error(ERROR);
 	pile.n = -1;
-	pile.a = (char**)malloc(sizeof(char*) * (ac));
-	pile.b = (char**)malloc(sizeof(char*) * (ac));
 	ft_read(&pile);
 	ft_tri(&pile);
 	ft_verifier(&pile);
