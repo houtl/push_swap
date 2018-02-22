@@ -107,12 +107,12 @@ f: fclean
 
 clean:
 	@echo "$(YELLOW)Clean	objs⌛\c$(RESET)"
-	@/bin/rm -rf $(OBJ_DIR)
+	@rm -rf $(OBJ_DIR)
 	@echo "\033[D\033[K$(GREEN)			[ OK ]$(RESET)"
 
 fclean:	clean
 	@echo "$(YELLOW)Clean	$(NAME)⌛\c$(RESET)"
-	@/bin/rm -rf $(NAME)
+	@rm -rf $(NAME)
 	@echo "\033[D\033[K$(GREEN)			[ OK ]$(RESET)"
 
 re: fclean all
