@@ -6,7 +6,7 @@
 /*   By: thou <marvin@42.fr>                        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2018/02/20 15:11:11 by thou              #+#    #+#             */
-/*   Updated: 2018/02/22 12:57:13 by thou             ###   ########.fr       */
+/*   Updated: 2018/02/22 16:31:04 by thou             ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -14,24 +14,24 @@
 
 void	ft_sa(t_pile *pile)
 {
-	t_list	*tmp;
+	t_lst	*tmp;
 
 	if (pile->a == NULL || pile->a->next == NULL)
 		return ;
 	tmp = pile->a->next;
 	pile->a->next = pile->a->next->next;
-	ft_lstadd(&(pile->a), tmp);
+	ft_add(&(pile->a), tmp);
 }
 
 void	ft_sb(t_pile *pile)
 {
-	t_list	*tmp;
+	t_lst	*tmp;
 
 	if (pile->b == NULL || pile->b->next == NULL)
 		return ;
 	tmp = pile->b->next;
 	pile->b->next = pile->b->next->next;
-	ft_lstadd(&(pile->b), tmp);
+	ft_add(&(pile->b), tmp);
 }
 
 void	ft_swap(char *str, t_pile *pile)

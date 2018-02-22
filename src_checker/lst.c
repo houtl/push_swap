@@ -1,31 +1,31 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   ok.c                                               :+:      :+:    :+:   */
+/*   lst.c                                              :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: thou <thou@student.42.fr>                  +#+  +:+       +#+        */
+/*   By: thou <marvin@42.fr>                        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2018/02/20 01:54:07 by thou              #+#    #+#             */
-/*   Updated: 2018/02/22 13:29:17 by thou             ###   ########.fr       */
+/*   Created: 2018/02/22 16:19:15 by thou              #+#    #+#             */
+/*   Updated: 2018/02/22 16:30:01 by thou             ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "checker.h"
 
-void	ft_verifier(t_pile *pile)
+void	ft_add(t_lst **lst, t_lst *new)
 {
-	int		i;
-	t_list	*tmp;
+	new->next = *lst;
+	*lst = new;
+}
 
-	tmp = pile->a;
-	if (pile->b)
-		ft_error(KO);
-	i = 0;
-	while (tmp && tmp->next)
-	{
-		if (tmp->content_size < tmp->next->content_size)
-			ft_error(KO);
-		tmp = tmp->next;
-	}
-	ft_error(OK);
+t_lst	*ft_new(int const content)
+{
+	t_lst	*dst;
+
+	dst = (t_lst*)malloc(sizeof(t_lst));
+	if (dst == NULL)
+		return (NULL);
+	dst->content = content;
+	dst->next = NULL;
+	return (dst);
 }

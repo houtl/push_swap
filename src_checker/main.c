@@ -6,7 +6,7 @@
 /*   By: thou <thou@student.42.fr>                  +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2018/02/04 15:28:05 by thou              #+#    #+#             */
-/*   Updated: 2018/02/22 13:27:16 by thou             ###   ########.fr       */
+/*   Updated: 2018/02/22 16:29:28 by thou             ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -21,22 +21,18 @@ void	ft_error(char *str)
 void	ft_read(int ac, char **av, t_pile *pile)
 {
 	char	*str;
-	t_list	*tmp;
-	int		i;
+	t_lst	*tmp;
+	int		n;
 
 	pile->a = NULL;
 	pile->b = NULL;
 	while (++pile->n < ac - 1)
 	{
 		str = av[pile->n + 1];
-		i = -1;
-		while (str[++i] != 0)
-		{
-			if (ft_isdigit(str[i]) == 0)
-				ft_error(ERROR);
-		}
-		tmp = ft_lstnew(str, ft_atoi(str));
-		ft_lstadd(&(pile->a), tmp);
+		ft_check_error(str);
+		n = ft_atoi(str);
+		tmp = ft_new(n);
+		ft_add(&(pile->a), tmp);
 	}
 }
 
@@ -60,7 +56,7 @@ void	ft_tri(t_pile *pile)
 				|| ft_strcmp(line, "rrr") == 0)
 			ft_reverota(str, pile);
 		else
-			ft_error("ERROR1");
+			ft_error(ERROR);
 		free(line);
 	}
 }

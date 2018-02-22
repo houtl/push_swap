@@ -6,7 +6,7 @@
 #    By: thou <marvin@42.fr>                        +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2018/01/12 17:48:41 by thou              #+#    #+#              #
-#    Updated: 2018/02/22 12:53:39 by thou             ###   ########.fr        #
+#    Updated: 2018/02/22 16:28:22 by thou             ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -30,7 +30,7 @@ INC2		=	$(INC) -I src_$(NAME2)/includes
 SRC_DIR1	=	src_$(NAME1)/
 SRC_DIR2	=	src_$(NAME2)/
 SRC_BASE1	=	main.c
-SRC_BASE2	=	main.c ok.c ft_swap.c ft_push.c ft_rotate.c ft_reverota.c
+SRC_BASE2	=	main.c check.c ft_swap.c ft_push.c ft_rotate.c ft_reverota.c lst.c
 SRC1		=	$(addprefix $(SRC_DIR1), $(SRC_BASE1))
 SRC2		=	$(addprefix $(SRC_DIR2), $(SRC_BASE2))
 OBJ_DIR		=	obj/

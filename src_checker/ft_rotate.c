@@ -6,7 +6,7 @@
 /*   By: thou <marvin@42.fr>                        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2018/02/22 10:45:35 by thou              #+#    #+#             */
-/*   Updated: 2018/02/22 12:57:06 by thou             ###   ########.fr       */
+/*   Updated: 2018/02/22 16:18:32 by thou             ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -14,8 +14,8 @@
 
 void	ft_ra(t_pile *pile)
 {
-	t_list	*list;
-	t_list	*tmp;
+	t_lst	*list;
+	t_lst	*tmp;
 
 	if (pile->a == NULL || pile->a->next == NULL)
 		return ;
@@ -30,8 +30,8 @@ void	ft_ra(t_pile *pile)
 
 void	ft_rb(t_pile *pile)
 {
-	t_list	*list;
-	t_list	*tmp;
+	t_lst	*list;
+	t_lst	*tmp;
 
 	if (pile->b == NULL || pile->b->next == NULL)
 		return ;
