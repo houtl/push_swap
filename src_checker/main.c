@@ -6,7 +6,7 @@
 /*   By: thou <thou@student.42.fr>                  +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2018/02/04 15:28:05 by thou              #+#    #+#             */
-/*   Updated: 2018/02/22 17:32:38 by thou             ###   ########.fr       */
+/*   Updated: 2018/02/22 17:34:03 by thou             ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -35,8 +35,8 @@ void	ft_read(char **av, t_pile *pile, int i)
 		tmp = ft_new(n);
 		if (pile->a == NULL)
 		{
-			pile->a = tmp;
 			lst = tmp;
+			pile->a = lst;
 		}
 		else
 		{
