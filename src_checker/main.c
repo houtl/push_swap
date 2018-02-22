@@ -6,7 +6,7 @@
 /*   By: thou <thou@student.42.fr>                  +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2018/02/04 15:28:05 by thou              #+#    #+#             */
-/*   Updated: 2018/02/22 17:34:03 by thou             ###   ########.fr       */
+/*   Updated: 2018/02/22 19:01:35 by                  ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -22,7 +22,6 @@ void	ft_read(char **av, t_pile *pile, int i)
 {
 	char	*str;
 	t_lst	*tmp;
-	t_lst	*lst;
 	int		n;
 
 	pile->a = NULL;
@@ -33,16 +32,7 @@ void	ft_read(char **av, t_pile *pile, int i)
 		ft_check_error(str);
 		n = ft_atoi(str);
 		tmp = ft_new(n);
-		if (pile->a == NULL)
-		{
-			lst = tmp;
-			pile->a = lst;
-		}
-		else
-		{
-			lst->next = tmp;
-			lst = lst->next;
-		}
+		ft_add(&pile->a, tmp);
 		i--;
 	}
 }
