@@ -6,7 +6,7 @@
 /*   By: thou <thou@student.42.fr>                  +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2018/02/20 01:54:07 by thou              #+#    #+#             */
-/*   Updated: 2018/02/22 16:42:41 by thou             ###   ########.fr       */
+/*   Updated: 2018/02/22 21:48:49 by                  ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -41,7 +41,7 @@ void	ft_verifier(t_pile *pile)
 	i = 0;
 	while (tmp && tmp->next)
 	{
-		if (tmp->content < tmp->next->content)
+		if (tmp->content > tmp->next->content)
 			ft_error(KO);
 		tmp = tmp->next;
 	}
