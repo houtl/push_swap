@@ -6,7 +6,7 @@
 /*   By: thou <thou@student.42.fr>                  +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2018/02/20 01:54:07 by thou              #+#    #+#             */
-/*   Updated: 2018/02/22 16:18:18 by thou             ###   ########.fr       */
+/*   Updated: 2018/02/22 16:42:41 by thou             ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -24,6 +24,8 @@ void	ft_check_error(char *str)
 		else if (i != 0 && ft_isdigit(str[i]) == 0)
 			ft_error(ERROR);
 	}
+	if (str[0] == '-' && str[1] == 0)
+		ft_error(ERROR);
 	if (ft_isint(str) == 0)
 		ft_error(ERROR);
 }

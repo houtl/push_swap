@@ -6,7 +6,7 @@
 /*   By: thou <marvin@42.fr>                        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2018/02/22 12:32:48 by thou              #+#    #+#             */
-/*   Updated: 2018/02/22 16:30:29 by thou             ###   ########.fr       */
+/*   Updated: 2018/02/22 17:11:26 by thou             ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -32,6 +32,7 @@ typedef struct		s_pile
 	int				n;
 }					t_pile;
 
+void				ft_printab(t_pile *pile);
 void				ft_add(t_lst **lst, t_lst *new);
 t_lst				*ft_new(int const content);
 void				ft_check_error(char *str);

@@ -6,7 +6,7 @@
 /*   By: thou <thou@student.42.fr>                  +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2018/02/04 15:28:05 by thou              #+#    #+#             */
-/*   Updated: 2018/02/22 16:29:28 by thou             ###   ########.fr       */
+/*   Updated: 2018/02/22 17:32:38 by thou             ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -18,21 +18,32 @@ void	ft_error(char *str)
 	exit(0);
 }
 
-void	ft_read(int ac, char **av, t_pile *pile)
+void	ft_read(char **av, t_pile *pile, int i)
 {
 	char	*str;
 	t_lst	*tmp;
+	t_lst	*lst;
 	int		n;
 
 	pile->a = NULL;
 	pile->b = NULL;
-	while (++pile->n < ac - 1)
+	while (i > 0)
 	{
-		str = av[pile->n + 1];
+		str = av[i];
 		ft_check_error(str);
 		n = ft_atoi(str);
 		tmp = ft_new(n);
-		ft_add(&(pile->a), tmp);
+		if (pile->a == NULL)
+		{
+			pile->a = tmp;
+			lst = tmp;
+		}
+		else
+		{
+			lst->next = tmp;
+			lst = lst->next;
+		}
+		i--;
 	}
 }
 
@@ -58,6 +69,7 @@ void	ft_tri(t_pile *pile)
 		else
 			ft_error(ERROR);
 		free(line);
+		ft_printab(pile);
 	}
 }
 
@@ -66,9 +78,9 @@ int		main(int ac, char **av)
 	t_pile	pile;
 
 	if (ac < 2)
-		ft_error(ERROR);
-	pile.n = -1;
-	ft_read(ac, av, &pile);
+		exit(0);
+	pile.n = ac - 1;
+	ft_read(av, &pile, pile.n);
 	ft_tri(&pile);
 	ft_verifier(&pile);
 	return (0);
