@@ -6,7 +6,7 @@
 /*   By: thou <thou@student.42.fr>                  +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2018/02/04 15:28:05 by thou              #+#    #+#             */
-/*   Updated: 2018/02/22 19:01:35 by                  ###   ########.fr       */
+/*   Updated: 2018/02/22 23:42:13 by thou             ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -35,6 +35,7 @@ void	ft_read(char **av, t_pile *pile, int i)
 		ft_add(&pile->a, tmp);
 		i--;
 	}
+	ft_checkdouble(pile);
 }
 
 void	ft_tri(t_pile *pile)

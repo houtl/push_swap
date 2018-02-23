@@ -6,11 +6,34 @@
 /*   By: thou <thou@student.42.fr>                  +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2018/02/20 01:54:07 by thou              #+#    #+#             */
-/*   Updated: 2018/02/22 21:48:49 by                  ###   ########.fr       */
+/*   Updated: 2018/02/23 00:11:49 by thou             ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "checker.h"
+
+void	ft_checkdouble(t_pile *pile)
+{
+	t_lst	*lst;
+	t_lst	*tmp;
+	int		k;
+
+	tmp = pile->a;
+	while (tmp)
+	{
+		k = 0;
+		lst = pile->a;
+		while(lst)
+		{
+			if (tmp->content == lst->content)
+				k++;
+			lst = lst->next;
+		}
+		if(k != 1)
+			ft_error(ERROR);
+		tmp = tmp->next;
+	}
+}
 
 void	ft_check_error(char *str)
 {

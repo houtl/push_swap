@@ -32,6 +32,7 @@ typedef struct		s_pile
 	int				n;
 }					t_pile;
 
+void				ft_checkdouble(t_pile *pile);
 void				ft_printab(t_pile *pile);
 void				ft_add(t_lst **lst, t_lst *new);
 t_lst				*ft_new(int const content);
