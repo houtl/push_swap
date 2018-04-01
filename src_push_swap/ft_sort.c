@@ -6,7 +6,7 @@
 /*   By: thou <thou@student.42.fr>                  +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2018/04/01 20:59:28 by thou              #+#    #+#             */
-/*   Updated: 2018/04/02 00:57:29 by thou             ###   ########.fr       */
+/*   Updated: 2018/04/02 01:04:45 by thou             ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -20,6 +20,7 @@ void	reverse_op(t_pile *pile, char *op)
 	{
 		str[0] = 'r';
 		str[1] = op[2];
+
 
 void	drop_last(t_pile *pile)
 {
