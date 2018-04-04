@@ -6,51 +6,55 @@
 /*   By: thou <marvin@42.fr>                        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2018/02/22 12:19:05 by thou              #+#    #+#             */
-/*   Updated: 2018/04/01 19:29:21 by                  ###   ########.fr       */
+/*   Updated: 2018/04/03 22:21:45 by thou             ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "push_swap.h"
 
-void	ft_rra(t_pile *pile)
+int		ft_rra(t_pile *pile)
 {
 	t_lst	*tmp;
+	int		i;
 
 	if (pile->a == NULL || pile->a->next == NULL)
-		return ;
+		return (0);
 	tmp = pile->a;
 	while (tmp->next->next)
 		tmp = tmp->next;
+	i = (tmp->content < tmp->next->content) ? -1 : 0;
 	tmp->next->next = pile->a;
 	pile->a = tmp->next;
+	i += (tmp->next->content < tmp->next->next->content) ? 1 : 0;
 	tmp->next = NULL;
+	return (i);
 }
 
-void	ft_rrb(t_pile *pile)
+int		ft_rrb(t_pile *pile)
 {
 	t_lst	*tmp;
 
 	if (pile->b == NULL || pile->b->next == NULL)
-		return ;
+		return (0);
 	tmp = pile->b;
 	while (tmp->next->next)
 		tmp = tmp->next;
+	i = (tmp->content > tmp->next->content) ? -1 : 0;
 	tmp->next->next = pile->b;
 	pile->b = tmp->next;
+	i += (tmp->next->content > tmp->next->next->content) ? 1 : 0;
 	tmp->next = NULL;
+	return (i);
 }
 
-void	ft_reverota(char *str, t_pile *pile)
+int		ft_reverota(char *str, t_pile *pile)
 {
 	if (ft_strcmp(str, "rra") == 0)
-		ft_rra(pile);
+		return (ft_rra(pile));
 	else if (ft_strcmp(str, "rrb") == 0)
-		ft_rrb(pile);
+		return (ft_rrb(pile));
 	else if (ft_strcmp(str, "rrr") == 0)
-	{
-		ft_rra(pile);
-		ft_rrb(pile);
-	}
+		return (ft_rra(pile) + ft_rrb(pile));
 	else
 		ft_error(ERROR);
 }

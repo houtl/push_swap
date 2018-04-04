@@ -6,24 +6,28 @@
 /*   By: thou <marvin@42.fr>                        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2018/02/20 15:47:32 by thou              #+#    #+#             */
-/*   Updated: 2018/04/01 19:28:46 by                  ###   ########.fr       */
+/*   Updated: 2018/04/03 21:58:31 by thou             ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "push_swap.h"
 
-void	ft_pa(t_pile *pile)
+int		ft_pa(t_pile *pile)
 {
 	t_lst	*tmp;
+	int		i;
 
 	if (pile->b == NULL)
-		return ;
+		return (0);
 	tmp = pile->b;
 	pile->b = pile->b->next;
 	ft_add(&(pile->a), tmp);
+	i = (pile->a->content > pile->b->content) ? -1 : 0;
+	i += (pile->a->content < pile->a->next->content) ? 1 : 0;
+	return (i);
 }
 
-void	ft_pb(t_pile *pile)
+int		ft_pb(t_pile *pile)
 {
 	t_lst	*tmp;
 
@@ -32,12 +36,15 @@ void	ft_pb(t_pile *pile)
 	tmp = pile->a;
 	pile->a = pile->a->next;
 	ft_add(&(pile->b), tmp);
+	i = (pile->a->content > pile->b->content) ? -1 : 0;
+	i += (pile->b->content < pile->b->next->content) ? 1 : 0;
+	return (i);
 }
 
-void	ft_push(char *str, t_pile *pile)
+int		ft_push(char *str, t_pile *pile)
 {
 	if (ft_strcmp(str, "pa") == 0)
-		ft_pa(pile);
+		return (ft_pa(pile));
 	if (ft_strcmp(str, "pb") == 0)
-		ft_pb(pile);
+		return (ft_pb(pile));
 }

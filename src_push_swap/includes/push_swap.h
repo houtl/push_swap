@@ -25,22 +25,18 @@ typedef struct		s_lst
 	struct s_lst	*next;
 }					t_lst;
 
-typedef struct		s_rst
-{
-	char			*op;
-	struct s_rst	*next;
-}					t_rst;
-
 typedef struct		s_pile
 {
 	t_lst			*a;
 	t_lst			*b;
-	t_rst			*rst;
-	t_rst			*tmp;
+	t_lst			*rst;
+	t_lst			*tmp;
 	int				n;
 	int				deep_max;
+	char			tab[12][4];
 }					t_pile;
 
+void				print_resultat(t_lst rst, char **tab);
 void				ft_checkdouble(t_pile *pile);
 void				ft_printab(t_pile *pile);
 void				ft_add(t_lst **lst, t_lst *new);
@@ -53,4 +49,5 @@ void				ft_swap(char *str, t_pile *pile);
 void				ft_error(char *str);
 void				ft_verifier(t_pile *pile);
 void				print_resultat(t_lst *lst);
+int					operation(t_pile *pile, int i);
 #endif
