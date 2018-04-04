@@ -6,7 +6,7 @@
 /*   By: thou <thou@student.42.fr>                  +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2018/04/01 20:59:28 by thou              #+#    #+#             */
-/*   Updated: 2018/04/04 11:50:37 by thou             ###   ########.fr       */
+/*   Updated: 2018/04/04 22:28:55 by thou             ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -25,26 +25,30 @@ int		reverse_op(t_pile *pile, int op)
 	return (operation(pile, op));
 }
 
-void	drop_last(t_pile *pile)
+int		drop_last(t_pile *pile)
 {
 	t_lst	*rst;
+	int		i;
 
 	rst = pile->tmp;
 	if (rst)
 	{
 		if (!rst->next)
 		{
-			reverse_op(pile, rst->content);
+			i = reverse_op(pile, rst->content);
+			free(rst);
 			rst = NULL;
 		}
 		else
 		{
-			while (rst && rst->next)
+			while (rst->next && rst->next->next)
 				rst = rst->next;
-			reverse_op(pile, rst->next->content);
+			i = reverse_op(pile, rst->next->content);
+			free(rst->next);
 			rst->next = NULL;
 		}
 	}
+	return (i);
 }
 
 int		sort_check(t_pile *pile, int deep)
@@ -74,18 +78,27 @@ int		sort_check(t_pile *pile, int deep)
 int		ft_sort(t_pile *pile, int deep)
 {
 	int		op;
+	int		eval;
 
 	if (deep >= pile->deep_max)
 	{
-		drop_last(pile);
+		pile->eva += drop_last(pile);
 		return (0);
 	}
 	if (sort_check(pile, deep) == 1)
 		return (0);
 	op = -1;
-	while (op < 11)
+	while (++op < 11)
 	{
-		operation(pile, op);
-
-
+		eval = operation(pile, op);
+		if (eval >= 0)
+		{
+			pile->eva += eval;
+			ft_add_last(&(pile->tmp), ft_new(op));
+			ft_sort(pile, deep + 1);
+		}
+		else
+			reverseop(pile, op);
+	}
+	pile->eva += drop_last(pile);
 }

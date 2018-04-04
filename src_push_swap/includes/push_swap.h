@@ -33,19 +33,22 @@ typedef struct		s_pile
 	t_lst			*tmp;
 	int				n;
 	int				deep_max;
+	int				eva;
 	char			tab[12][4];
 }					t_pile;
 
 void				print_resultat(t_lst rst, char **tab);
 void				ft_checkdouble(t_pile *pile);
 void				ft_printab(t_pile *pile);
+void				ft_free_lst(t_lst **lst);
+void				ft_add_last(t_lst **lst, t_lst *new);
 void				ft_add(t_lst **lst, t_lst *new);
 t_lst				*ft_new(int const content);
 void				ft_check_error(char *str);
-void				ft_reverota(char *str, t_pile *pile);
-void				ft_rotate(char *str, t_pile *pile);
-void				ft_push(char *str, t_pile *pile);
-void				ft_swap(char *str, t_pile *pile);
+int					ft_reverota(char *str, t_pile *pile);
+int					ft_rotate(char *str, t_pile *pile);
+int					ft_push(char *str, t_pile *pile);
+int					ft_swap(char *str, t_pile *pile);
 void				ft_error(char *str);
 void				ft_verifier(t_pile *pile);
 void				print_resultat(t_lst *lst);
