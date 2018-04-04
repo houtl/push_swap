@@ -6,7 +6,7 @@
 /*   By: thou <thou@student.42.fr>                  +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2018/04/01 20:59:28 by thou              #+#    #+#             */
-/*   Updated: 2018/04/05 01:04:22 by thou             ###   ########.fr       */
+/*   Updated: 2018/04/05 01:30:32 by thou             ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -61,6 +61,13 @@ int		sort_check(t_pile *pile, int deep)
 		tmp = pile->a;
 		while (tmp && tmp->next)
 		{
+			if (tmp->content < tmp->next->content)
+				pile->eva++;
+			tmp = tmp->next;
+		}
+		tmp = pile->b;
+		while (tmp && tmp->next)
+		{
 			if (tmp->content > tmp->next->content)
 				pile->eva++;
 			tmp = tmp->next;
@@ -89,9 +96,9 @@ int		ft_sort(t_pile *pile, int deep)
 		pile->eva += drop_last(pile);
 		return (0);
 	}
-	ft_putendl("test2");
 	if (sort_check(pile, deep) == 1)
 		return (1);
+	ft_putendl("test2");
 	op = -1;
 	while (++op < 11)
 	{
