@@ -6,7 +6,7 @@
 /*   By: thou <marvin@42.fr>                        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2018/02/22 10:45:35 by thou              #+#    #+#             */
-/*   Updated: 2018/04/03 22:22:24 by thou             ###   ########.fr       */
+/*   Updated: 2018/04/04 23:44:41 by thou             ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -16,6 +16,7 @@ int		ft_ra(t_pile *pile)
 {
 	t_lst	*list;
 	t_lst	*tmp;
+	int		i;
 
 	if (pile->a == NULL || pile->a->next == NULL)
 		return (0);
@@ -58,7 +59,7 @@ int		ft_rotate(char *str, t_pile *pile)
 	else if (ft_strcmp(str, "rb") == 0)
 		return (ft_rb(pile));
 	else if (ft_strcmp(str, "rr") == 0)
-		return (ft_ra(pile) + ft_rb(pile);
+		return (ft_ra(pile) + ft_rb(pile));
 	else
 		return (-1);;
 }

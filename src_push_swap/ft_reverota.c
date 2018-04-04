@@ -6,7 +6,7 @@
 /*   By: thou <marvin@42.fr>                        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2018/02/22 12:19:05 by thou              #+#    #+#             */
-/*   Updated: 2018/04/03 22:21:45 by thou             ###   ########.fr       */
+/*   Updated: 2018/04/04 23:45:28 by thou             ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -33,6 +33,7 @@ int		ft_rra(t_pile *pile)
 int		ft_rrb(t_pile *pile)
 {
 	t_lst	*tmp;
+	int		i;
 
 	if (pile->b == NULL || pile->b->next == NULL)
 		return (0);
@@ -56,5 +57,5 @@ int		ft_reverota(char *str, t_pile *pile)
 	else if (ft_strcmp(str, "rrr") == 0)
 		return (ft_rra(pile) + ft_rrb(pile));
 	else
-		ft_error(ERROR);
+		return (-1);
 }

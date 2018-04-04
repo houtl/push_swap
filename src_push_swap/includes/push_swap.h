@@ -34,10 +34,11 @@ typedef struct		s_pile
 	int				n;
 	int				deep_max;
 	int				eva;
-	char			tab[12][4];
+	char			**tab;
 }					t_pile;
 
-void				print_resultat(t_lst rst, char **tab);
+int					ft_sort(t_pile *pile, int deep);
+void				print_resultat(t_lst *rst, char **tab);
 void				ft_checkdouble(t_pile *pile);
 void				ft_printab(t_pile *pile);
 void				ft_free_lst(t_lst **lst);
@@ -51,6 +52,5 @@ int					ft_push(char *str, t_pile *pile);
 int					ft_swap(char *str, t_pile *pile);
 void				ft_error(char *str);
 void				ft_verifier(t_pile *pile);
-void				print_resultat(t_lst *lst);
 int					operation(t_pile *pile, int i);
 #endif

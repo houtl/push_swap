@@ -6,7 +6,7 @@
 /*   By: thou <thou@student.42.fr>                  +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2018/02/04 15:28:05 by thou              #+#    #+#             */
-/*   Updated: 2018/04/03 00:07:18 by thou             ###   ########.fr       */
+/*   Updated: 2018/04/04 23:42:04 by thou             ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -40,9 +40,21 @@ void	ft_read(char **av, t_pile *pile, int i)
 
 void		init_Pile(t_pile *pile)
 {
-	pile.tab = {sa, sb, ss, pa, pb, ra, rb, rr, rra, rrb, rrr};
-	pile.deep_max = 10 * pile.n;
-	pile.eva = 0;
+	pile->tab = (char**)malloc(sizeof(char*) * 12);
+	pile->tab[0] = "sa";
+	pile->tab[1] = "sb";
+	pile->tab[2] = "ss";
+	pile->tab[3] = "pa";
+	pile->tab[4] = "pb";
+	pile->tab[5] = "ra";
+	pile->tab[6] = "rb";
+	pile->tab[7] = "rr";
+	pile->tab[8] = "rra";
+	pile->tab[9] = "rrb";
+	pile->tab[10] = "rrr";
+	pile->tab[11] = NULL;
+	pile->deep_max = 10 * pile->n;
+	pile->eva = 0;
 }
 
 int		operation(t_pile *pile, int i)
@@ -69,6 +81,6 @@ int		main(int ac, char **av)
 	pile.n = ac - 1;
 	ft_read(av, &pile, pile.n);
 	ft_sort(&pile, 0);
-	print_resultat(pile.resultat, pile.tab);
+	print_resultat(pile.rst, pile.tab);
 	return (0);
 }

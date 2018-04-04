@@ -6,7 +6,7 @@
 /*   By: thou <marvin@42.fr>                        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2018/02/20 15:47:32 by thou              #+#    #+#             */
-/*   Updated: 2018/04/03 21:58:31 by thou             ###   ########.fr       */
+/*   Updated: 2018/04/04 23:43:52 by thou             ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -30,9 +30,10 @@ int		ft_pa(t_pile *pile)
 int		ft_pb(t_pile *pile)
 {
 	t_lst	*tmp;
+	int		i;
 
 	if (pile->a == NULL)
-		return ;
+		return (0);
 	tmp = pile->a;
 	pile->a = pile->a->next;
 	ft_add(&(pile->b), tmp);
@@ -47,4 +48,5 @@ int		ft_push(char *str, t_pile *pile)
 		return (ft_pa(pile));
 	if (ft_strcmp(str, "pb") == 0)
 		return (ft_pb(pile));
+	return (-1);
 }
