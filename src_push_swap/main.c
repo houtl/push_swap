@@ -6,7 +6,7 @@
 /*   By: thou <thou@student.42.fr>                  +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2018/02/04 15:28:05 by thou              #+#    #+#             */
-/*   Updated: 2018/04/04 23:42:04 by thou             ###   ########.fr       */
+/*   Updated: 2018/04/05 01:10:16 by thou             ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -38,7 +38,7 @@ void	ft_read(char **av, t_pile *pile, int i)
 	ft_checkdouble(pile);
 }
 
-void		init_Pile(t_pile *pile)
+void		init_pile(t_pile *pile)
 {
 	pile->tab = (char**)malloc(sizeof(char*) * 12);
 	pile->tab[0] = "sa";
@@ -55,6 +55,7 @@ void		init_Pile(t_pile *pile)
 	pile->tab[11] = NULL;
 	pile->deep_max = 10 * pile->n;
 	pile->eva = 0;
+	pile->tmp = NULL;
 }
 
 int		operation(t_pile *pile, int i)
@@ -79,6 +80,7 @@ int		main(int ac, char **av)
 	if (ac < 2)
 		exit(0);
 	pile.n = ac - 1;
+	init_pile(&pile);
 	ft_read(av, &pile, pile.n);
 	ft_sort(&pile, 0);
 	print_resultat(pile.rst, pile.tab);
