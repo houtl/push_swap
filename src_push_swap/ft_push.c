@@ -6,7 +6,7 @@
 /*   By: thou <marvin@42.fr>                        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2018/02/20 15:47:32 by thou              #+#    #+#             */
-/*   Updated: 2018/04/04 23:43:52 by thou             ###   ########.fr       */
+/*   Updated: 2018/04/05 03:37:41 by thou             ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -18,12 +18,12 @@ int		ft_pa(t_pile *pile)
 	int		i;
 
 	if (pile->b == NULL)
-		return (0);
+		return (-1);
 	tmp = pile->b;
 	pile->b = pile->b->next;
 	ft_add(&(pile->a), tmp);
-	i = (pile->a->content > pile->b->content) ? -1 : 0;
-	i += (pile->a->content < pile->a->next->content) ? 1 : 0;
+	i = (pile->a && pile->b && pile->a->content > pile->b->content) ? -1 : 0;
+	i += (pile->a && pile->a->next && pile->a->content < pile->a->next->content) ? 1 : 0;
 	return (i);
 }
 
@@ -33,12 +33,12 @@ int		ft_pb(t_pile *pile)
 	int		i;
 
 	if (pile->a == NULL)
-		return (0);
+		return (-1);
 	tmp = pile->a;
 	pile->a = pile->a->next;
 	ft_add(&(pile->b), tmp);
-	i = (pile->a->content > pile->b->content) ? -1 : 0;
-	i += (pile->b->content < pile->b->next->content) ? 1 : 0;
+	i = (pile->a && pile->b && pile->a->content > pile->b->content) ? -1 : 0;
+	i += (pile->b && pile->b->next && pile->b->content < pile->b->next->content) ? 1 : 0;
 	return (i);
 }
 

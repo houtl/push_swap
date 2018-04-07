@@ -6,7 +6,7 @@
 /*   By: thou <thou@student.42.fr>                  +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2018/04/01 20:59:28 by thou              #+#    #+#             */
-/*   Updated: 2018/04/05 01:30:32 by thou             ###   ########.fr       */
+/*   Updated: 2018/04/05 22:34:05 by thou             ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -34,14 +34,16 @@ int		drop_last(t_pile *pile)
 	i = 0;
 	if (rst)
 	{
+	ft_putendl(" is our eva ");
 		if (!rst->next)
 		{
 			i = reverse_op(pile, rst->content);
 			free(rst);
-			rst = NULL;
+			pile->tmp = NULL;
 		}
 		else
 		{
+	ft_putendl(" is our eva ");
 			while (rst->next && rst->next->next)
 				rst = rst->next;
 			i = reverse_op(pile, rst->next->content);
@@ -73,11 +75,15 @@ int		sort_check(t_pile *pile, int deep)
 			tmp = tmp->next;
 		}
 	}
+	ft_putnbr(pile->eva);
+	ft_putendl(" is our eva ");
 	if (pile->eva == pile->n - 1)
 	{
 		pile->deep_max = deep;
 		ft_free_lst(&(pile->rst));
 		pile->rst = pile->tmp;
+		print_resultat(pile->rst, pile->tab);
+		pile->eva += drop_last(pile);
 		return (1);
 	}
 	else
@@ -89,20 +95,22 @@ int		ft_sort(t_pile *pile, int deep)
 	int		op;
 	int		eval;
 
-	ft_putendl("test");
 	if (deep >= pile->deep_max)
 	{
-	ft_putendl("test1");
 		pile->eva += drop_last(pile);
 		return (0);
 	}
 	if (sort_check(pile, deep) == 1)
 		return (1);
-	ft_putendl("test2");
 	op = -1;
 	while (++op < 11)
 	{
 		eval = operation(pile, op);
+		ft_printab(pile);
+		ft_putnbr(op);
+		ft_putendl(" is op, ");
+		ft_putnbr(eval);
+		ft_putendl(" is eval.");
 		if (eval >= 0)
 		{
 			pile->eva += eval;

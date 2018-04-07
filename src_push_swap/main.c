@@ -6,7 +6,7 @@
 /*   By: thou <thou@student.42.fr>                  +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2018/02/04 15:28:05 by thou              #+#    #+#             */
-/*   Updated: 2018/04/05 01:10:16 by thou             ###   ########.fr       */
+/*   Updated: 2018/04/05 02:35:38 by thou             ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -56,6 +56,7 @@ void		init_pile(t_pile *pile)
 	pile->deep_max = 10 * pile->n;
 	pile->eva = 0;
 	pile->tmp = NULL;
+	pile->rst = NULL;
 }
 
 int		operation(t_pile *pile, int i)
