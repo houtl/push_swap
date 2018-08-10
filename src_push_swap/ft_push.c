@@ -6,7 +6,7 @@
 /*   By: thou <marvin@42.fr>                        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2018/02/20 15:47:32 by thou              #+#    #+#             */
-/*   Updated: 2018/04/05 03:37:41 by thou             ###   ########.fr       */
+/*   Updated: 2018/08/10 17:42:04 by thou             ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -22,9 +22,9 @@ int		ft_pa(t_pile *pile)
 	tmp = pile->b;
 	pile->b = pile->b->next;
 	ft_add(&(pile->a), tmp);
-	i = (pile->a && pile->b && pile->a->content > pile->b->content) ? -1 : 0;
-	i += (pile->a && pile->a->next && pile->a->content < pile->a->next->content) ? 1 : 0;
-	return (i);
+//	i = (pile->a && pile->b && pile->a->content > pile->b->content) ? -1 : 0;
+//	i += (pile->a && pile->a->next && pile->a->content < pile->a->next->content) ? 1 : 0;
+	return (0);
 }
 
 int		ft_pb(t_pile *pile)
@@ -39,7 +39,7 @@ int		ft_pb(t_pile *pile)
 	ft_add(&(pile->b), tmp);
 	i = (pile->a && pile->b && pile->a->content > pile->b->content) ? -1 : 0;
 	i += (pile->b && pile->b->next && pile->b->content < pile->b->next->content) ? 1 : 0;
-	return (i);
+	return (0);
 }
 
 int		ft_push(char *str, t_pile *pile)
