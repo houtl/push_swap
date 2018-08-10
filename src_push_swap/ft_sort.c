@@ -6,7 +6,7 @@
 /*   By: thou <thou@student.42.fr>                  +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2018/04/01 20:59:28 by thou              #+#    #+#             */
-/*   Updated: 2018/04/05 22:34:05 by thou             ###   ########.fr       */
+/*   Updated: 2018/04/09 18:36:29 by thou             ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -34,7 +34,7 @@ int		drop_last(t_pile *pile)
 	i = 0;
 	if (rst)
 	{
-	ft_putendl(" is our eva ");
+	ft_putendl("drop_last, if(rst)");
 		if (!rst->next)
 		{
 			i = reverse_op(pile, rst->content);
@@ -43,12 +43,12 @@ int		drop_last(t_pile *pile)
 		}
 		else
 		{
-	ft_putendl(" is our eva ");
-			while (rst->next && rst->next->next)
+	ft_putendl("if(rst) && if (rst->next)");
+			while (rst->next)
 				rst = rst->next;
-			i = reverse_op(pile, rst->next->content);
-			free(rst->next);
-			rst->next = NULL;
+			i = reverse_op(pile, rst->content);
+			free(rst);
+			rst = NULL;
 		}
 	}
 	return (i);
@@ -107,7 +107,7 @@ int		ft_sort(t_pile *pile, int deep)
 	{
 		eval = operation(pile, op);
 		ft_printab(pile);
-		ft_putnbr(op);
+		ft_putstr(pile->tab[op]);
 		ft_putendl(" is op, ");
 		ft_putnbr(eval);
 		ft_putendl(" is eval.");
