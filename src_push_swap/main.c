@@ -59,19 +59,19 @@ void		init_pile(t_pile *pile)
 	pile->rst = NULL;
 }
 
-int		operation(t_pile *pile, int i)
+void	operation(t_pile *pile, int i)
 {
 	if (i >=0 && i <= 2)
-		return (ft_swap(pile->tab[i], pile));
+		ft_swap(pile->tab[i], pile);
 	else if (i == 3 || i == 4)
-		return (ft_push(pile->tab[i], pile));
+		ft_push(pile->tab[i], pile);
 	else if (i >= 5 && i <= 7)
-		return (ft_rotate(pile->tab[i], pile));
+		ft_rotate(pile->tab[i], pile);
 	else if (i >= 8 && i <= 10)
-		return (ft_reverota(pile->tab[i], pile));
+		ft_reverota(pile->tab[i], pile);
 	else
 		ft_error(ERROR);
-	return (-1);
+	ft_add_last(&(pile->rst), ft_new(i));
 }
 
 int		main(int ac, char **av)
@@ -83,7 +83,9 @@ int		main(int ac, char **av)
 	pile.n = ac - 1;
 	init_pile(&pile);
 	ft_read(av, &pile, pile.n);
-	ft_sort(&pile, 0);
+	if (pile.n == 2)
+		pile.a->n > pile.a->next->n ? operation(&pile, 0) : 0;
+	ft_sort(&pile, pile.n);
 	print_resultat(pile.rst, pile.tab);
 	return (0);
 }

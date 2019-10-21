@@ -35,6 +35,7 @@ typedef struct		s_pile
 	int				deep_max;
 	int				eva;
 	char			**tab;
+	int				*i;
 }					t_pile;
 
 typedef struct		var
@@ -47,7 +48,7 @@ typedef struct		var
 };					var;
 
 
-int					ft_sort(t_pile *pile);
+void				ft_sort(t_pile *pile, int size);
 void				print_resultat(t_lst *rst, char **tab);
 void				ft_checkdouble(t_pile *pile);
 void				ft_printab(t_pile *pile);
@@ -64,6 +65,5 @@ void				ft_error(char *str);
 void				ft_verifier(t_pile *pile);
 void				operation(t_pile *pile, int i);
 int					count_lst_len(t_lst *lst);
-void				b_back_rb_rrb(t_pile *pile, int j);
-void				a_back_ra_rra(t_pile *pile, int f, int j);
+int					m_small(t_pile *pile, int m);
 #endif

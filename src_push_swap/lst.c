@@ -56,3 +56,20 @@ t_lst	*ft_new(int const content)
 	dst->next = NULL;
 	return (dst);
 }
+
+int		count_lst_len(t_lst *lst)
+{
+	t_lst	*tmp;
+	int		len;
+
+	tmp = lst;
+	len = 0;
+	while (tmp)
+	{
+		tmp = tmp->next;
+		len++;
+	}
+	return (len++);
+}
+
+int		
